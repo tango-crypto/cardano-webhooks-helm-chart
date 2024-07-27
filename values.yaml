@@ -1,0 +1,35 @@
+replicaCount: 1
+
+image:
+  repository: javiertc86/cardano-webhooks
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 3000
+
+envSecretName: cardano-webhooks-secret
+
+env:
+  NODE_ENV: development
+  KAFKA_CLIENT: webhook
+  KAFKA_PORT: 9092
+  KAFKA_CONSUMER_GROUP: webhook-consumer
+  SCYLLA_KEYSPACE: cardanodb
+  SCYLLA_LOCAL_DATA_CENTER: datacenter1
+  REDIS_PORT: 6377
+  DB_PORT: 5432
+  DB_NAME: cexplorer
+  DB_DEBUG: false
+  DB_PORT_TESTNET: 5432
+  DB_NAME_TESTNET: cexplorer
+  DB_DEBUG_TESTNET: false
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

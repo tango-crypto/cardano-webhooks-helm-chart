@@ -1,0 +1,23 @@
+# Ignore the Kubernetes secret file
+templates/secret.yaml
+
+# Ignore any other potential sensitive files
+# values.yaml is not usually ignored, but if it contains sensitive data, consider it.
+# values.yaml
+
+# Node modules (if any)
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# Ignore Helm chart dependencies
+charts/
+
+# Ignore any sensitive environment files
+.env
