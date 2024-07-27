@@ -6,7 +6,7 @@ Cardano events helm chart
 ### Uninstall any previous failed release
 `helm uninstall cardano-webhooks`
 
-Create `secrets.yaml`with the values
+Create `secrets.yaml` with the values:
 ```
 apiVersion: v1
 kind: Secret
