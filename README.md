@@ -1,18 +1,38 @@
+## Cardano-webhooks Helm chart
+
+The first step is to install Helm. Helm is a package manager for Kubernetes that simplifies the deployment and management of applications on Kubernetes clusters.
+
+To Install Helm on Mac and Linux follow the instructions below:
+
+**MacOS:**
+
+Install using Homebrew:
+```bash
+brew install helm
+```
+**Linux:**
+
+Download the Helm binary:
+```bash
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+```
+For more details, refer to the official <a href="https://helm.sh/docs/intro/install/" target="_blank" rel="noopener noreferrer">Helm Installation Guide</a>.
+
 ## Secrets encoding
 Kubernetes requires secret data to be base64 encoded to ensure that it can handle arbitrary binary data in a text-based format. This encoding ensures data integrity during transport and storage.
 
-```
+```bash
 echo -n 'your-secret-value' | base64
 ```
 
 Example:
-```
+```bash
 echo -n 'v8hlDV0yMAHHlIurYupj' | base64
 # Output: djhoblRWMHlNQUhIbEl1cll1cGo=
 ```
 
 Create `secrets.yaml`with the encoded values:
-```
+```yaml
 apiVersion: v1
 kind: Secret
 metadata:
@@ -35,12 +55,12 @@ data:
   KAFKA_HOST: XXX
 ```
 To view secrets:   
-```
+```bash
 $ kubectl get secrets
 ```
     
 To describe secret:
-```
+```bash
 $ kubectl describe secret
 ```
     
@@ -51,26 +71,26 @@ $ kubectl get secret cardano-webhooks-secret -o yaml
 ## Installing Helm Chart
 
 ### Install the Helm chart in the default namespace
-```
+```bash
 git clone https://github.com/tango-crypto/cardano-webhooks-helm-chart.git
 $ cd cardano-webhooks-helm-chart
 $ helm install cardano-webhooks .
 ``````
 
 ### Uninstall any previous failed release
-```
+```bash
 $ helm uninstall cardano-webhooks
 ```
 
 List running pods:
-``````
+```bash
 $ kubectl get pods
 NAME                                                  READY   STATUS    RESTARTS   AGE
 cardano-webhooks-cardano-webhooks-helm-chart-86b57d59d-m6ngt     1/1     Running   0          9m47s
 ``````
 
 Get logs:
-```
+```bash
 $ kubectl logs -f cardano-webhooks-cardano-webhooks-helm-chart-86b57d59d-m6ngt  
 ```
 Should show the following: 
