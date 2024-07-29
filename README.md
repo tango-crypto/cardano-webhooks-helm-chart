@@ -1,6 +1,20 @@
 ## Cardano-webhooks Helm chart
 
-The first step is to install Helm. Helm is a package manager for Kubernetes that simplifies the deployment and management of applications on Kubernetes clusters.
+## Build docker images
+
+Here we are going to build the Docker image for Cardano-webhooks (https://github.com/tango-crypto/cardano-webhooks)
+
+### Build the Docker image
+```bash 
+$ cd cardano-api
+$ docker build -t javiertc86/cardano-webhooks:latest .
+```
+### Push the Docker image to the repository
+```bash
+$ docker push javiertc86/cardano-webhooks:latest
+```
+
+The nest step is to install Helm. Helm is a package manager for Kubernetes that simplifies the deployment and management of applications on Kubernetes clusters.
 
 To Install Helm on Mac and Linux follow the instructions below:
 
